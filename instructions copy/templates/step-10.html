@@ -1,0 +1,39 @@
+<div class="content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-4 text-center">Step {{step.title}}</h1>
+        
+                    <h2 class="font-weight-normal mt-4">Navbar Component</h2>
+
+                    <p>The navbar at the top of the site is a standard Bootstrap component. While this could be put directly on index.html, create a component for it so it can be reused should this site have more pages in the future</p>
+                    
+                    <ul>
+                        <li>Create a new <a href="https://docs.angularjs.org/guide/component" target="_blank">component</a> on <code>app</code> called navbar</li>
+                        <li>Using <code>template</code>, add the HTML for the bootstrap navbar in your desired choice (single string, array of joined strings, or template literal)</li>
+                        <li>Add the <code>&lt;navbar&gt;</code> component tag onto index.html</li>
+                    </ul>
+
+                    <p>The final navbar should look like below:</p>
+
+                    <div class="text-center">
+                        <img src="images/navbar.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="step-nav text-center bg-dark">
+        <div class="flex flex-align-center flex-justify-between height-100 width-100" role="group" aria-label="Lab Steps">
+            <button type="button" class="btn btn-primary" ng-click="step.prevStep(step.step)" ng-disabled="step.step == 1">Back</button>
+            <!--<div class="btn btn-light">{{step.step}}</div>-->
+            <button type="button" class="btn btn-primary" ng-click="step.nextStep(step.step)" ng-disabled="step.step == config.lab.steps">Next</button>
+        </div>
+    
+        <div class="step-nav-progress">
+            <div class="step-nav-progress__track">
+                <div class="step-nav-progress__slider" ng-style="{'width': step.step/config.lab.steps*100 + '%'}"></div>
+            </div>
+        </div>
+    </nav>

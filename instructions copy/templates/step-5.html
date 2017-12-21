@@ -1,0 +1,40 @@
+<div class="content-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1 class="display-4 text-center">Step {{step.title}}</h1>
+	
+				<h2 class="font-weight-normal">Activate Angular JS</h2>
+
+				<p>Similar to Knockout and its ko.applyBindings method, after constructing a module and controller, Angular needs to be told to start using them somewhere on the webpage.</p>
+				
+				<ul>
+					<li>On <b>index.html</b>, add an <code>ng-app</code> <a href="https://docs.angularjs.org/guide/directive" target="_blank">directive</a> onto the <code>&lt;body&gt;</code> tag and set the value equal to the name of the module you made</li>
+					<li>Add a <code>ng-controller</code> directive and set the value equal to the name of the controller</li>
+					<li>You can verify Angular JS is working by writing the expression <code>{{ 1 + 2 }}</code> somewhere inside the body tag. If you see the number 3 appear in its place in the browser, Angular JS is working correctly. It's compiler saw the expression and evaluated the result. If you see {{ 1 + 2 }} on the page, check the browser console for any errors</li>
+				</ul>
+
+				<div class="text-center">
+					<div class="code-hide relative">
+						<img src="/images/activate.png" alt="" >
+						<button type="button" class="btn btn-large btn-secondary" ng-click="step.showImg($event)">Show Code</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<nav class="step-nav text-center bg-dark">
+	<div class="flex flex-align-center flex-justify-between height-100 width-100" role="group" aria-label="Lab Steps">
+		<button type="button" class="btn btn-primary" ng-click="step.prevStep(step.step)" ng-disabled="step.step == 1">Back</button>
+		<!--<div class="btn btn-light">{{step.step}}</div>-->
+		<button type="button" class="btn btn-primary" ng-click="step.nextStep(step.step)" ng-disabled="step.step == config.lab.steps">Next</button>
+	</div>
+
+	<div class="step-nav-progress">
+		<div class="step-nav-progress__track">
+			<div class="step-nav-progress__slider" ng-style="{'width': step.step/config.lab.steps*100 + '%'}"></div>
+		</div>
+	</div>
+</nav>

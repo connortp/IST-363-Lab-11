@@ -1,0 +1,41 @@
+<div class="content-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1 class="display-4 text-center">Step {{step.title}}</h1>
+	
+				<h2 class="font-weight-normal">Module and Controller</h2>
+
+				<p>To start using Angular JS, you will need to at least create a <a href="https://docs.angularjs.org/guide/module" target="_blank">module</a> and a <a href="https://docs.angularjs.org/guide/controller" target="_blank">controller</a>. A module acts a container for all the different parts of an Angular application - here it will represent the entire weather information site. A controller is similar to a viewmodel in Knockout, but also takes on more traditional controller functionality in an MVC framework</p>
+				
+				<ul>
+					<li>In <b>app.js</b>, create a variable called <code>app</code> and declare a new angular module on it called <code>weather</code></li>
+					<li>Create a new controller called <code>mainCtrl</code> on the weather module</li>
+					<li>Inside the main controller, create a constant called <code>key</code> and set it equal to the Open Weather Map API key you copied from the previous step</li>
+				</ul>
+				
+				<div class="text-center">
+					<div class="code-hide relative">
+						<img src="/images/module.png" alt="" >
+						<button type="button" class="btn btn-large btn-secondary" ng-click="step.showImg($event)">Show Code</button>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<nav class="step-nav text-center bg-dark">
+	<div class="flex flex-align-center flex-justify-between height-100 width-100" role="group" aria-label="Lab Steps">
+		<button type="button" class="btn btn-primary" ng-click="step.prevStep(step.step)" ng-disabled="step.step == 1">Back</button>
+		<!--<div class="btn btn-light">{{step.step}}</div>-->
+		<button type="button" class="btn btn-primary" ng-click="step.nextStep(step.step)" ng-disabled="step.step == config.lab.steps">Next</button>
+	</div>
+
+	<div class="step-nav-progress">
+		<div class="step-nav-progress__track">
+			<div class="step-nav-progress__slider" ng-style="{'width': step.step/config.lab.steps*100 + '%'}"></div>
+		</div>
+	</div>
+</nav>

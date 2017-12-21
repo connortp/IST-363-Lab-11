@@ -1,0 +1,37 @@
+<div class="content-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1 class="display-4 text-center">Step {{step.title}}</h1>
+	
+				<h2 class="font-weight-normal">Introduction</h2>
+				
+				<p>In this lab, you will create a weather service/information app using <a href="https://angularjs.org/" target="_blank">Angular JS</a>. Weather data will be accessed through Open Weather Map API</p>
+
+				<h3 class="font-weight-normal">Final Initial View</h3>
+				<div class="text-center">
+					<img src="images/finalsearch.png" alt="">
+				</div>
+
+				<h3 class="font-weight-normal mt-4">Final Weather View (After Searching)</h3>
+				<div class="text-center">
+					<img src="images/finalweather.png" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<nav class="step-nav text-center bg-dark">
+	<div class="flex flex-align-center flex-justify-between height-100 width-100" role="group" aria-label="Lab Steps">
+		<button type="button" class="btn btn-primary" ng-click="step.prevStep(step.step)" ng-disabled="step.step == 1">Back</button>
+		<!--<div class="btn btn-light">{{step.step}}</div>-->
+		<button type="button" class="btn btn-primary" ng-click="step.nextStep(step.step)" ng-disabled="step.step == config.lab.steps">Next</button>
+	</div>
+
+	<div class="step-nav-progress">
+		<div class="step-nav-progress__track">
+			<div class="step-nav-progress__slider" ng-style="{'width': step.step/config.lab.steps*100 + '%'}"></div>
+		</div>
+	</div>
+</nav>

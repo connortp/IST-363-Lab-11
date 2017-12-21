@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-app="weather" ng-controller="mainCtrl">
+
+<navbar></navbar>
+    <!--Navbar for site here -->
+
+    <section class="search-section" ng-if="!displayWeather">
+        <div class="container">
+            <div class="row">
+                <div class="vh-100 col-12 d-flex flex-column justify-content-center">
+                    <div class="display-4 text-center">Search For Weather</div>
+
+                    <form class="mt-4" ng-submit="searchWeather()">
+                        <div class="form-group d-flex">
+                            <input id="zip" type="text" placeholder="Enter ZIP Code. Get Weather." class="form-control" />
+                            <button type="submit" class="btn btn-dark">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="current-section" ng-if="displayWeather">
+        <h1 class="sr-only">Current Weather</h1>
+        <div class="container">
+            <div class="row">
+                <div class="vh-100 col-12 d-flex flex-column align-items-center justify-content-center">
+                    <div>Current Conditions</div>
+
+                    <div class="current-city" class="display-2">
+                      {{ current.name }}
+                        <!-- Selected City Name -->
+                    </div>
+
+                    <div class="current-temp" class="mt-4 mb-4 display-4">
+                      Temperature: {{ (9/5) * (current.main.temp -273) +32 | number:0 }}
+                        <!-- Curent weather temperature -->
+                    </div>
+
+                    <div class="current-weather mt-4 mb-4 d-flex align-items-center justify-content-center">
+                        <img ng-src="http://openweathermap.org/img/w/{{current.weather[0].icon}}.png"/>
+                        <!-- Curent weather icon and condition -->
+                        {{current.weather[0].description}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-dark text-light pt-4 pb-4" ng-if="displayWeather">
+        <h1 class="sr-only">Forecast</h1>
+
+        <header class="bg-dark text-light mb-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 display-4">Looking Ahead</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Table for 5 day/3 hour forecase showing icon, date, time, temperature, and coniditions -->
+                    <table class="table">
+                      <tbody>
+                        <tr ng-repeat="forecast in forecast.list">
+                            <td>
+                                <img ng-src="http://openweathermap.org/img/w/{{forecast.weather[0].icon}}.png" />
+                            </td>
+                            <td>
+                                <span>{{ forecast.dt*1000 | date:'EEE, d' }}</span>
+                            </td>
+                            <td>
+                                <span>{{ forecast.dt*1000 | date:'h:mma' }}</span>
+                            </td>
+                            <td>
+                                <span>Temperature: {{ (9/5) * (forecast.main.temp -273) + 32 | number:0 }} &#8457;</span>
+                            </td>
+                            <td>
+                                <span>{{forecasr.weather[0].description}}</span>
+                            </td>
+
+                        </tr>
+                      </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

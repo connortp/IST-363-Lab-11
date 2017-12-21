@@ -1,0 +1,41 @@
+<div class="content-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1 class="display-4 text-center">Step {{step.title}}</h1>
+	
+				<h2 class="font-weight-normal">Controller and Hiding Sections</h2>
+
+				<p>Inside the main controller, we want to create a few properties on the controller that will be needed for the website. In Knockout, properties were able to be added directly on the viewmodel. In Angular, properties are added to <a href="https://docs.angularjs.org/guide/scope" target="_blank">Scope</a> which serves as an intermediary and the "glue" between the controller and the view</p>
+
+				<ul>
+					<li>The Scope object <code>$scope</code> needs to be injected into the main controller</li>
+					<li>Onto the scope object, create a property called <code>displayWeather</code> and set it to <code>false</code>. This boolean will be used to control which sections should be visible or not depending on the state of the application. When users first visit the site, they should only be shown the search section. Once they search for a zip code, the search section should disappear and the current and forecase weather sections should appear instead</li>
+					<li>Add a <code>current</code> property and a <code>forecast</code> property with no assigned value onto scope as well. These will store information received back from the weather API once a user performs a location search</li>
+					<li>On <b>index.html</b>, use the <code>ng-if</code> directive and the <code>displayWeather</code> property to render the correct sections initially as described above</li>
+				</ul>
+
+				<div class="text-center">
+					<div class="code-hide relative">
+						<img src="/images/scopeproperties.png" alt="">					
+						<button type="button" class="btn btn-large btn-secondary" ng-click="step.showImg($event)">Show Code</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<nav class="step-nav text-center bg-dark">
+	<div class="flex flex-align-center flex-justify-between height-100 width-100" role="group" aria-label="Lab Steps">
+		<button type="button" class="btn btn-primary" ng-click="step.prevStep(step.step)" ng-disabled="step.step == 1">Back</button>
+		<!--<div class="btn btn-light">{{step.step}}</div>-->
+		<button type="button" class="btn btn-primary" ng-click="step.nextStep(step.step)" ng-disabled="step.step == config.lab.steps">Next</button>
+	</div>
+
+	<div class="step-nav-progress">
+		<div class="step-nav-progress__track">
+			<div class="step-nav-progress__slider" ng-style="{'width': step.step/config.lab.steps*100 + '%'}"></div>
+		</div>
+	</div>
+</nav>

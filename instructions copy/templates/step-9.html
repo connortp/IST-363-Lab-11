@@ -1,0 +1,51 @@
+<div class="content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-4 text-center">Step {{step.title}}</h1>
+        
+                    <h2 class="font-weight-normal mt-4">Forecasted Weather</h2>
+
+                    <h3 class="font-weight-normal mt-4">Request</h3>
+                    <ul>
+                        <li>Back in <b>main.js</b>, create another AJAX request underneath the first. This will be used to get data for a 5 day forecast with conditions every 3 hours</li>
+                        <li>For this request:
+                            <ul>
+                                <li>Use <code>http://api.openweathermap.org/data/2.5/forecast</code> as the URL endpoint</li>
+                                <li>Use the same parameters as the current weather request</li>
+                                <li><code>console.log</code> out the response returned from the API and if it's successful, set <code>$scope.forecast</code> equal to the data from the response</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3 class="font-weight-normal mt-4">View</h3>
+                    
+                    <ul>
+                        <li>On <b>index.html</b>, use a Bootstrap table and <a href="https://docs.angularjs.org/api/ng/directive/ngRepeat" target="_blank">ng-repeat</a> to loop through the array of forecasted weather data points and create a table row for each</li>
+                        <li>Put the weather icon, date &amp; time, temperature in degrees Fahrenheight, and the condition description in separate table cells</li>
+                        <li>For the date and time, the API returns the datetime of the weather data point as a UNIX timestamp. Convert this to a proper date format using a <a href="https://docs.angularjs.org/api/ng/filter/date" target="_blank">date filter</a></li>
+                    </ul>
+
+                    <p>The view for the completed forecast section of the page should look like below</p>
+
+                    <div class="text-center">
+                        <img src="images/forecastsection.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="step-nav text-center bg-dark">
+        <div class="flex flex-align-center flex-justify-between height-100 width-100" role="group" aria-label="Lab Steps">
+            <button type="button" class="btn btn-primary" ng-click="step.prevStep(step.step)" ng-disabled="step.step == 1">Back</button>
+            <!--<div class="btn btn-light">{{step.step}}</div>-->
+            <button type="button" class="btn btn-primary" ng-click="step.nextStep(step.step)" ng-disabled="step.step == config.lab.steps">Next</button>
+        </div>
+    
+        <div class="step-nav-progress">
+            <div class="step-nav-progress__track">
+                <div class="step-nav-progress__slider" ng-style="{'width': step.step/config.lab.steps*100 + '%'}"></div>
+            </div>
+        </div>
+    </nav>
